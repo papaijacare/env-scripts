@@ -44,6 +44,7 @@ prompt.get([{
             port:   '80',
             suffix: '/a/config/deployment/',
             file:   'service.properties',
+            solr:   'ui/solr.connection.properties',
           }
           dir(choice);
         }

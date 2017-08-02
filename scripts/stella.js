@@ -1,13 +1,11 @@
 const fs = require('fs');
 const pathXML = '/www/a/config/deployment/properties.dev.xml';
-const pathSOLR = '/www/a/config/deployment/dev-config/sandbox/ui/solr.connection.properties';
 const options = {
   flags: 'w',
   defaultEncoding: 'utf8',
   autoClose: true
 };
 const fileXML = fs.createWriteStream(pathXML, options);
-const fileSOLR = fs.createWriteStream(pathSOLR, options);
 
 const processProperties = (content) => {
 	const array = content.toString().split("\n");
@@ -24,7 +22,7 @@ const processProperties = (content) => {
   fileXML.write('</config>');
   fileXML.end();
 
-  console.log('\nYou\'re good to go.')
+  console.log('\nYou\'re good to go with Stella.')
 };
 
 module.exports = processProperties;
