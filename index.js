@@ -6,7 +6,7 @@ const servers = require('./config/servers');
 for(let i=0; i<servers.length; i++) {
   console.log(`[ ${i} ] ${servers[i].name} (${servers[i].host})`);
 }
-console.log(`[ ${servers.length} ] Enter IP`);
+console.log(`[ ${servers.length} ] Custom server IP`);
 prompt.get([{
   description: 'Which server do you want to set up?',
   name: 'server',

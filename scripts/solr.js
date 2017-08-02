@@ -5,13 +5,16 @@ const options = {
   defaultEncoding: 'utf8',
   autoClose: true
 };
-const fileSOLR = fs.createWriteStream(pathSOLR, options);
 
 const processProperties = (content) => {
-  fileSOLR.write(content);
-  fileSOLR.end();
+  const backup = fs.createReadStream(pathSOLR).pipe(fs.createWriteStream(pathSOLR + '.bkp_' + new Date().getTime().toString()));
+  backup.on('finish', () => {
+    const fileSOLR = fs.createWriteStream(pathSOLR, options);
+    fileSOLR.write(content);
+    fileSOLR.end();
 
-  console.log('\nYou\'re good to go with Solr.')
+    console.log('\nYou\'re good to go with Solr.')
+  });
 };
 
 module.exports = processProperties;
