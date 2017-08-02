@@ -1,0 +1,16 @@
+{
+  "name": "env-scripts-v2",
+  "version": "1.0.0",
+  "description": "Stella environment scripts version 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pedro Dias",
+  "license": "ISC",
+  "dependencies": {
+    "prompt": "^1.0.0",
+    "request": "^2.79.0",
+    "x-ray": "^2.3.2"
+  }
+}

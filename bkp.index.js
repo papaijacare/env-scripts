@@ -1,0 +1,35 @@
+const request = require('request');
+const fs = require('fs');
+
+const pathXML = '/www/a/config/deployment/properties.dev.xml'
+const pathSOLR = '/www/a/config/deployment/dev-config/sandbox/ui/solr.connection.properties'
+const options = {
+  flags: 'w',
+  defaultEncoding: 'utf8',
+  autoClose: true
+}
+const fileXML = fs.createWriteStream(pathXML, options);
+const fileSOLR = fs.createWriteStream(pathSOLR, options);
+
+
+const process = (content) => {
+	const array = content.toString().split("\n");
+	fileXML.open();
+  // fileXML.write('<?xml version="1.0" encoding="UTF-8" ?>\n<!-- Pointing to 11.120.101.30 - MCOM 1% Trunk Cell-2. Generated with ./env-setup.rb 2016-09-21 14:19 -->\n<config>\n');
+  fileXML.write('<?xml version="1.0" encoding="UTF-8" ?>\n<!-- Pointing to 11.120.101.30 - MCOM 1% Trunk Cell-2. Generated with ./env-setup.rb 2016-09-21 14:19 -->\n<config>\n');
+  for(i in array) {
+    const value = array[i].split('=');
+    // console.log('<property name="' + value[0] + '"><override ifenv="dev-config/sandbox">' + value[1] + '</override></property>');
+    fileXML.write('\t<property name="' + value[0] + '">\n\t\t<override ifenv="dev-config/sandbox">' + value[1] + '</override>\n\t</property>\n');
+  }
+  fileXML.end('<config>');
+};
+
+request.get('http://11.120.101.30/a/config/deployment/stars_stella_mcom_ui1/service.properties', (error, response, body) => {
+    if (!error && response.statusCode == 200) {
+        // console.log(body);
+        process(body);
+        
+
+    }
+});
