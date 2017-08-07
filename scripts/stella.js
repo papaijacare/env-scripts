@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const pathXML = '/www/a/config/deployment/properties.dev.xml';
 const options = {
@@ -14,7 +16,7 @@ const processProperties = (content) => {
 
     fileXML.write('<?xml version="1.0" encoding="UTF-8" ?>\n');
     fileXML.write('<config>\n');
-    for(i in array) {
+    for(let i in array) {
       const value = array[i].split('=');
       // console.log('<property name="' + value[0] + '"><override ifenv="dev-config/sandbox">' + value[1] + '</override></property>');
       fileXML.write('\t<property name="' + value[0] + '">\n\t\t<override ifenv="dev-config/sandbox">' + value[1] + '</override>\n\t</property>\n');

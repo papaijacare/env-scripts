@@ -2,15 +2,26 @@
   "name": "env-scripts-v2",
   "version": "1.0.0",
   "description": "Stella environment scripts version 2",
-  "main": "index.js",
+  "main": "app.js",
+  "bin" : {
+    "env-setup" : "./app.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node app.js --presets es2015,stage-2 --silent"
   },
   "author": "Pedro Dias",
   "license": "ISC",
   "dependencies": {
+    "inquirer": "^3.2.1",
     "prompt": "^1.0.0",
     "request": "^2.79.0",
     "x-ray": "^2.3.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest-node": "^0.3.1",
+    "babel-preset-stage-2": "^6.24.1"
   }
 }

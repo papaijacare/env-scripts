@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const pathSOLR = '/www/a/config/deployment/dev-config/sandbox/ui/solr.connection.properties';
 const options = {
