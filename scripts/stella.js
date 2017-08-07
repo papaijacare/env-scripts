@@ -1,7 +1,18 @@
 'use strict';
 
 const fs = require('fs');
-const pathXML = '/www/a/config/deployment/properties.dev.xml';
+const path = require('path');
+const os = require('os');
+
+let rootDir;
+if(os.platform().indexOf('win32') !== -1) {
+  rootDir = 'C:';
+} else {
+  rootDir = '/';
+}
+
+const pathXML = path.join(rootDir,'www','a','config','deployment','properties.dev.xml');
+// const pathXML = '/www/a/config/deployment/properties.dev.xml';
 const options = {
   flags: 'w',
   defaultEncoding: 'utf8',
@@ -24,7 +35,7 @@ const processProperties = (content) => {
     fileXML.write('</config>');
     fileXML.end();
 
-    console.log('\nYou\'re good to go with Stella.')
+    console.log('You\'re good to go with Stella.')
   });
 };
 

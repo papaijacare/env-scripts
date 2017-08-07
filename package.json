@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Stella environment scripts version 2",
   "main": "app.js",
-  "bin" : {
-    "env-setup" : "./app.js"
+  "bin": {
+    "env-setup": "./app.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "inquirer": "^3.2.1",
+    "jsonfile": "^3.0.1",
     "prompt": "^1.0.0",
     "request": "^2.79.0",
     "x-ray": "^2.3.2"

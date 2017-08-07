@@ -54,7 +54,7 @@ const chosenFolder = (answers) => {
 };
 
 const fetchProperties = (folder) => {
-  fetchStella(getURL() + folder + currentServer.file);
+  fetchStella(getURL() + folder + currentServer.stella);
   fetchSolr(getURL() + folder + currentServer.solr);
 };
 
@@ -101,7 +101,7 @@ const chosenSolr = (answers) => {
   }
 };
 
-const getURL = () => `http://${currentServer.host}${currentServer.suffix}`;
+const getURL = () => `http://${currentServer.host}${currentServer.dir}`;
 
 const onErr = (err) => {
   console.log('Error: ', err);

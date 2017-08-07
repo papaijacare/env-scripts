@@ -1,7 +1,18 @@
 'use strict';
 
 const fs = require('fs');
-const pathSOLR = '/www/a/config/deployment/dev-config/sandbox/ui/solr.connection.properties';
+const path = require('path');
+const os = require('os');
+
+let rootDir;
+if(os.platform().indexOf('win32') !== -1) {
+  rootDir = 'C:';
+} else {
+  rootDir = '/';
+}
+
+const pathSOLR = path.join(rootDir,'www','a','config','deployment','dev-config','sandbox','ui','solr.connection.properties');
+// const pathSOLR = '/www/a/config/deployment/dev-config/sandbox/ui/solr.connection.properties';
 const options = {
   flags: 'w',
   defaultEncoding: 'utf8',
@@ -15,7 +26,7 @@ const processProperties = (content) => {
     fileSOLR.write(content);
     fileSOLR.end();
 
-    console.log('\nYou\'re good to go with Solr.')
+    console.log('You\'re good to go with Solr.')
   });
 };
 

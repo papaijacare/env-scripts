@@ -1,0 +1,37 @@
+[
+  {
+    "name": "MCOM Cell2",
+    "host": "11.120.101.30",
+    "dir": "/a/config/deployment/",
+    "stella": "service.properties",
+    "solr": "ui/solr.connection.properties"
+  },
+  {
+    "name": "BCOM Cell2",
+    "host": "11.120.101.76",
+    "dir": "/a/config/deployment/",
+    "stella": "service.properties",
+    "solr": "ui/solr.connection.properties"
+  },
+  {
+    "name": "MCOM Staging",
+    "host": "11.120.103.60",
+    "dir": "/a/config/deployment/",
+    "stella": "service.properties",
+    "solr": "ui/solr.connection.properties"
+  },
+  {
+    "name": "BCOM Staging",
+    "host": "mdc2brc0405",
+    "dir": "/a/config/deployment/",
+    "stella": "service.properties",
+    "solr": "ui/solr.connection.properties"
+  },
+  {
+    "name": "MCOM Cell5",
+    "host": "11.120.149.218",
+    "dir": "/a/config/deployment/",
+    "stella": "service.properties",
+    "solr": "ui/solr.connection.properties"
+  }
+]
