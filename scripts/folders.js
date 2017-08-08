@@ -62,6 +62,7 @@ const fetchStella = (url) => {
   console.log('Fetching Stella properties...')
   request.get(url, (err, response, properties) => {
     if (!err && response.statusCode == 200) {
+      if(currentServer.async) properties += "\nstella.server.role=ASYNC";
       writeStella(properties);
     }
   });

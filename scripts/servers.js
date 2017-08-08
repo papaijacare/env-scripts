@@ -27,6 +27,11 @@ const run = () => {
 			message: 		'Enter IP address:',
 			validate: 	validateIP,
 			when: 	 		(answers) => answers.server === CUSTOM_SRV_OPTION_STRING
+		}, {
+			type: 			'confirm',
+			name: 			'async',
+			message: 		'Do you want do add async role to configuration?',
+			default: 		false
 		}
 	];
 	inquirer.prompt(questions).then(chosenServer);
@@ -37,6 +42,7 @@ const chosenServer = (answers) => {
 		const choice = serversList[0];
 		choice.name = 'Custom server';
 		choice.host = answers.ip;
+		choice.async = answers.async;
 		folders(choice);
 	} else if(answers.server === OPTION_BACK) {
 		module.parent.exports();
@@ -45,6 +51,7 @@ const chosenServer = (answers) => {
 		return 1;
 	} else {
 		const choice = serversList.filter((element) => element.name === answers.server)[0];
+		choice.async = answers.async;
 		folders(choice);
 	}
 }
