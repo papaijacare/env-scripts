@@ -15,7 +15,7 @@ const run = () => {
 		{
 			type: 		'list',
 			name: 		'server',
-			message: 	'What server do you want to set up?',
+			message: 	'Which environment do you want to point to?',
 			choices: 	serversList,
 	  	pageSize: serversList.length
 		}, {
