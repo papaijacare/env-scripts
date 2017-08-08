@@ -29,7 +29,7 @@ const processProperties = (content) => {
     for(let i in array) {
       const value = array[i].split('=');
       // console.log('<property name="' + value[0] + '"><override ifenv="dev-config/sandbox">' + value[1] + '</override></property>');
-      fileXML.write('\t<property name="' + value[0] + '">\n\t\t<override ifenv="dev-config/sandbox">' + value[1] + '</override>\n\t</property>\n');
+      fileXML.write('\t<property name="' + value[0] + '">\n\t\t<override ifenv="dev-config/sandbox">' + value[1].replace(/&/g,'&amp;') + '</override>\n\t</property>\n');
     }
     fileXML.write('</config>');
     fileXML.end();
