@@ -13,7 +13,8 @@ const main = () => {
 	  type:     'list',
 	  name:     'option',
 	  message:  'What do you want to do?',
-	  choices: 	[OPTION_SETUP, OPTION_EDIT, new inquirer.Separator(), OPTION_EXIT]
+	  choices: 	[OPTION_SETUP, OPTION_EDIT, new inquirer.Separator(), OPTION_EXIT],
+	  pageSize: 10
 	}];
 	inquirer.prompt(questions).then(handleOption);
 }

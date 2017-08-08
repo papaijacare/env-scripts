@@ -7,7 +7,8 @@ const writeFile = require('./write');
 const OPTION_LIST = 'List servers';
 const OPTION_ADD = 'Add server';
 const OPTION_REMOVE = 'Remove server';
-const OPTION_EXIT = 'Go back'
+const OPTION_BACK = 'Go back'
+const OPTION_EXIT = 'Exit'
 
 let serversList;
 
@@ -17,7 +18,8 @@ const run = () => {
 	  type:     'list',
 	  name:     'option',
 	  message:  'Choose one:',
-	  choices: 	[OPTION_LIST, OPTION_ADD, OPTION_REMOVE, new inquirer.Separator(), OPTION_EXIT]
+	  choices: 	[OPTION_LIST, OPTION_ADD, OPTION_REMOVE, new inquirer.Separator(), OPTION_BACK, OPTION_EXIT],
+	  pageSize: 10
 	}];
 	inquirer.prompt(questions).then(handleOption);
 }
@@ -32,8 +34,11 @@ const handleOption = (answers) => {
 		add();
 	} else if(answers.option === OPTION_REMOVE) {
 		remove();
-	} else if(answers.option === OPTION_EXIT) {
+	} else if(answers.option === OPTION_BACK) {
 		module.parent.exports();
+	} else if(answers.option === OPTION_EXIT) {
+		console.log('Bye!');
+		return 1;
 	}
 }
 
@@ -76,7 +81,8 @@ const remove = () => {
 		type: 'list',
 		name: 'server',
 		message: 'Select a server to remove:',
-		choices: serversList
+		choices: serversList,
+	  pageSize: serversList.length
 	}).then(removeServer);
 }
 

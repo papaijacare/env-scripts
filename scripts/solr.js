@@ -12,7 +12,6 @@ if(os.platform().indexOf('win32') !== -1) {
 }
 
 const pathSOLR = path.join(rootDir,'www','a','config','deployment','dev-config','sandbox','ui','solr.connection.properties');
-// const pathSOLR = '/www/a/config/deployment/dev-config/sandbox/ui/solr.connection.properties';
 const options = {
   flags: 'w',
   defaultEncoding: 'utf8',

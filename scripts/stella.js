@@ -12,7 +12,6 @@ if(os.platform().indexOf('win32') !== -1) {
 }
 
 const pathXML = path.join(rootDir,'www','a','config','deployment','properties.dev.xml');
-// const pathXML = '/www/a/config/deployment/properties.dev.xml';
 const options = {
   flags: 'w',
   defaultEncoding: 'utf8',
