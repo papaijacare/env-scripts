@@ -46,11 +46,13 @@ const add = () => {
 	const questions = [{
 	  type:     'input',
 	  name:     'name',
-	  message:  'Name:'
+	  message:  'Name:',
+	  validate: (value) => value ? true : 'Name is required'
 	}, {
 	  type:     'input',
 	  name:     'host',
-	  message:  'Host:'
+	  message:  'Host IP address:',
+	  validate: validateIP
 	}, {
 	  type:     'input',
 	  name:     'dir',
@@ -77,29 +79,41 @@ const validateServer = (answers) => {
 }
 
 const remove = () => {
+	const newList = serversList.concat([new inquirer.Separator(), OPTION_BACK, OPTION_EXIT]);
+
 	inquirer.prompt({
 		type: 'list',
 		name: 'server',
 		message: 'Select a server to remove:',
-		choices: serversList,
-	  pageSize: serversList.length
+		choices: newList,
+	  pageSize: newList.length
 	}).then(removeServer);
 }
 
 const removeServer = (answers) => {
-	inquirer.prompt({
-		type: 'confirm',
-		name: 'iamsure',
-		message: 'Confirm you want to remove ' + answers.server + '?',
-		default: false
-	}).then((confirmation) => {
-		if(confirmation.iamsure) { 
-			const newServersList = serversList.filter((element) => element.name !== answers.server);
-			writeFile(newServersList);
-		}
+	if(answers.server === OPTION_BACK) {
 		run();
-	});
+	} else if(answers.server === OPTION_EXIT) {
+		console.log('Bye!');
+		return 1;
+	} else {
+		inquirer.prompt({
+			type: 'confirm',
+			name: 'iamsure',
+			message: 'Confirm you want to remove ' + answers.server + '?',
+			default: false
+		}).then((confirmation) => {
+			if(confirmation.iamsure) { 
+				const newServersList = serversList.filter((element) => element.name !== answers.server);
+				writeFile(newServersList);
+			}
+			run();
+		});
+	}
 	
 }
+
+const validateIP = (value) => value.match(/^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$/) ? true : 'Invalid IP address!';
+
 
 module.exports = run;
